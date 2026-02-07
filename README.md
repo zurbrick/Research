@@ -36,3 +36,7 @@ This repository is a collection of research notebooks and tutorials using the Qu
  - [EMA Cross Strategy Based on VXX](https://github.com/QuantConnect/Research/blob/master/Analysis/04%20EMA%20Cross%20Strategy%20Based%20on%20VXX.ipynb): This research demonstrates how to build a simple EMA cross strategy with Python and how to get the performance statistics of the strategy.
 
  - [Pairs Trading Strategy Based on Cointegration](https://github.com/QuantConnect/Research/blob/master/Analysis/05%20Pairs%20Trading%20Strategy%20Based%20on%20Cointegration.ipynb): This research goes through the development process step-by-step of a pairs trading strategy and shows how to backtest the strategy.
+
+### Frameworks
+
+ - [Technical Co-Founder Framework](https://github.com/QuantConnect/Research/blob/master/Frameworks/Technical-Co-Founder-Framework.md): A reusable framework for building real, working products with AI as your technical co-founder. Defines project phases, working agreements, and completion criteria.
