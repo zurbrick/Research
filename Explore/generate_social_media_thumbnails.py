@@ -3,30 +3,62 @@ import numpy as np
 import plotly.graph_objects as go
 from io import BytesIO
 from pathlib import Path
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, UnidentifiedImageError
 from requests import get
-from typing import List
+from requests.exceptions import RequestException
+from urllib.parse import urlparse
 
-def __get_text_content(url: str) -> str:
-    return get(url).content.decode('utf-8')
+# Every request in this script targets a third party, so cap how long we wait
+# and how much we are willing to read. Without these the scheduled job can hang
+# on a slow host or be driven out of memory by an oversized profile picture.
+REQUEST_TIMEOUT_SECONDS = 30
+MAX_PROFILE_BYTES = 5 * 1024 * 1024
 
-def __get_json_content(url: str) -> List:
-    content = __get_text_content(url) \
-        .replace("null", "None").replace("true", "True").replace("false", "False")
+def __get_json_content(url: str) -> dict:
+    """Fetch and parse a JSON document.
+
+    The body is decoded with a real JSON parser rather than eval, so that the
+    response, which comes from a remote host and is therefore outside our
+    control, is treated as data and can never be executed as Python.
+    """
     try:
-        return eval(content)
-    except:
+        response = get(url, timeout=REQUEST_TIMEOUT_SECONDS)
+        response.raise_for_status()
+        return response.json()
+    except (RequestException, ValueError):
         exit(f'Invalid content for {url}')
 
 def __get_profile(url: str) -> Image:
     if not url or 'icon' in url:
         return None
     
-    image = get(url.replace("\\",""), stream=True)
+    url = url.replace("\\", "")
+
+    # The profile URL is supplied by the strategy author, so restrict it to web
+    # schemes to keep it from reaching file:// paths or other local resources.
+    if urlparse(url).scheme not in ('http', 'https'):
+        return None
+
+    try:
+        image = get(url, stream=True, timeout=REQUEST_TIMEOUT_SECONDS)
+    except RequestException:
+        return None
+
     if image.status_code != 200:
         return None
 
-    profile = Image.open(image.raw).convert("RGB")
+    # Stream the response and stop as soon as it exceeds MAX_PROFILE_BYTES, so
+    # that an oversized picture cannot exhaust the runner's memory.
+    body = bytearray()
+    for chunk in image.iter_content(chunk_size=65536):
+        body.extend(chunk)
+        if len(body) > MAX_PROFILE_BYTES:
+            return None
+
+    try:
+        profile = Image.open(BytesIO(body)).convert("RGB")
+    except (UnidentifiedImageError, OSError, Image.DecompressionBombError):
+        return None
 
     h,w = profile.size
     

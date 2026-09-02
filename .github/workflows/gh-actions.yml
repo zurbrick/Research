@@ -4,13 +4,22 @@ on:
   schedule:
     - cron:  "0 */3 * * *"   # Runs "at minute 0 past every 3rd hour." (see https://crontab.guru)
   workflow_dispatch:         # Runs on manual trigger
-    
+
+# The job only needs to read the repository, so drop every other permission
+# rather than inheriting whatever the repository default happens to be.
+permissions:
+  contents: read
+
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     environment: Content Deploy
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+        with:
+          # Do not leave the GITHUB_TOKEN in .git/config, because later steps in
+          # this job run third-party code and process remote content.
+          persist-credentials: false
 
       - name: Install dependencies
         run: |-
@@ -24,7 +33,7 @@ jobs:
         run: python ./Explore/generate_social_media_thumbnails.py
 
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_KEY }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET }}
