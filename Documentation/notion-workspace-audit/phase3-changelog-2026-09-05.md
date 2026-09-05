@@ -74,3 +74,11 @@ Recommended recurring task (recommendation only, not created): "Monthly stalenes
 6. Decide whether Workspace Rules gets W-069.
 7. Approve or decline the W-050 repoint (Reading & Resources → Business Insights).
 8. Add the monthly staleness task to W-042 if he wants it.
+
+## 6. Addendum — Command Center nav edit (Don's request, 2026-09-05 17:27 UTC)
+
+Don asked MAX to apply item 1 of the open list directly. Applied with update_content (search-and-replace on exact section text), never replace_content:
+
+- WORK, LIFE, KNOWLEDGE, PROJECTS nav sections rewritten; a 🗄️ Archive nav section added; the Sales Development line removed from the Shared section (it now lives under the TeamLogic holding page); the two 404 links (SecureAI Documentation, Client Knowledge Base) replaced by one unlinked pointer to the Teams account.
+- The stale November 2025 bottom half was not deleted. It was moved unedited into a collapsed toggle under a SUPERSEDED 2026-09-05 callout, honoring the never-delete rule. Don can delete the toggle in the UI if he wants it gone.
+- **Incident:** after the edit, the read-back showed the orange "Second Brain Reorg stopped at Phase 1" banner missing from the top of the page. No edit targeted it; the update tool appears to have dropped the first block on re-render. MAX re-inserted the banner with its exact original text and read the page back again. Lesson for the Rules page: after any update_content on a page whose first block is a callout, read back the first block explicitly.
