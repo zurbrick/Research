@@ -1,0 +1,76 @@
+# Notion Workspace Reorganization — Phase 3 Change Log and Link-Integrity Check
+
+Date: 2026-09-05 · Executor: MAX · Every batch ran only after a printed dry run and Don's "go". Nothing was deleted. No content was replaced; every content write was an insert (top or bottom) or a title/icon property change.
+
+## 1. Change log
+
+| Batch | Action | Count | Result |
+|---|---|---|---|
+| 0 | Created 🗄️ Archive (3d2eb501d42c819e9b6de62a5fde4c92) with NOW / WORK / LIFE / KNOWLEDGE / PROJECTS sub-pages, and 🚩 TeamLogic (Migrating) (3d2eb501d42c81bcbb8fdf41d5df533b) under Command Center | 7 creates | Verified. Six titles corrected to the icon-outside-title convention; the rename of the TeamLogic holding page was denied, so its title keeps the emoji |
+| 1 | LIFE / KNOWLEDGE / PROJECTS consolidation: Health & Fitness → W-005; Trading → W-054; Properties Hub, W-036, W-037 → W-025; People → W-001; W-041 → W-057; Household Management Hub, Travel, Side Hustle → Command Center; Records Retention, PiMan, W-008, Shared Context Packet, W-019, W-020, W-021, W-042, W-059 → W-063. Renames: Household Management Hub → 🚗 Vehicles & Household; blank-titled hub → 💼 Sales Development | 19 moves, 2 renames | Verified by fetching all six target parents and the four moved pages |
+| 2 | Sixteen TeamLogic pages and databases → 🚩 TeamLogic (Migrating), including W-015 and W-016 extracted from the root Work Hub | 16 moves | Verified; a baseline Sales Pipeline row still resolves its Contact relation and its last-edited time is unchanged |
+| 3 | Archived with callout: W-018, Rebuild Checklist, four HISTORICAL pages, W-002, W-003, W-006, W-007, Archive (Zye Cleanup), Zye's Brain, 08-27 review, Life Ops, Claude Memory Archive, Cruise, Life Scorecard. Moved without callout: Business Insights [SUPERSEDED] DB, Agent Audits DB | 17 callouts, 19 moves | Verified on all four Archive sub-pages; Zye's Brain read back with callout above its existing banners |
+| 4 | Archived with callout: three RiverHouse blanks, Branford Ag (+ Glamping Domes), Lot 5, Lots 5/6/7, Side Businesses Operating Map, Quick Start Guide, TL Operating Map, Observability Sprint, TL Work Hub shell. Moved without callout: Docs, Daily Health Log, Strategy Library, Properties, Vendors & Contractors, Insurance Policies, Zemple Hub databases. Appended a Current State block to Properties Hub | 12 callouts, 19 moves, 1 append | Verified on three Archive sub-pages and Properties Hub |
+| 5 | W-001: Corrections section appended (Orbit retired; People roster location; Memory Archive moved) | 1 append | Read back |
+| 6 | Wiki Index: dated notes appended to 12 entry lines; W-065, W-066, W-067, W-068 added; W-011, W-027, W-028 marked RETIRED; reorganization log appended | 1 update_content (15 edits), 1 append | Read back |
+| 7 | Metadata blocks inserted at the top of 34 live pages in the W-010 format | 34 inserts | Read back on W-063 and W-024 |
+| 8 | Phase 4: 📐 Workspace Rules page created under Command Center; Wiki Index entry appended | 1 create, 1 append | See phase4 section below |
+
+Totals: 8 creates, 73 moves, 2 renames, 29 archive callouts, 38 other inserts, 0 replacements, 0 deletions.
+
+## 2. Link-integrity check
+
+State legend: repointed · left intentionally (ID link survives or target archived with successor named) · unresolved (needs Don).
+
+| Linking page | Target | Link type | State |
+|---|---|---|---|
+| Command Center nav | Life Ops, Life Scorecard, W-002, OpenClaw, Orbit, Hermes, Work Pipeline, Work Context, TeamLogic IT, SecureAI Docs (404), Client KB (404) | body link | unresolved: Don pastes the replacement nav text (Workspace Rules page, toggle at bottom) |
+| Command Center bottom sections | Client KB, SecureAI Docs, Knowledge DBs | body link | unresolved: removed by the same paste |
+| Wiki Index | every W-page | index entry | left intentionally: entries survive moves; archived and retired entries carry dated notes |
+| Wiki Index | W-065 to W-068, Archive, TeamLogic holding page, Workspace Rules | index entry | repointed (new entries appended) |
+| W-001 | Orbit W-007, W-003 | body link | left intentionally, with a Corrections line appended stating both are archived |
+| W-001 | 👥 People | child page | repointed (People is now a child; Corrections line links it) |
+| W-063 | W-019, W-020, W-021, Shared Context Packet, Canon Registry, HISTORICAL W-063 | body link | left intentionally: targets are now children or archived with successor |
+| W-021 | W-005, W-004, W-001, W-054, Contacts, Inbox, Health Check-ins | body link | left intentionally: ID links; W-004 now under the TL holding page |
+| W-020 ADR-003 | Hermes read-only claim | body text | unresolved: content edit for Don; noted in W-020 metadata block |
+| W-050 | Reading & Resources (trashed) | body link | unresolved: proposed repoint to Business Insights, not approved yet |
+| Life Scorecard (archived) | Properties Hub, Financial Accounts, Health Check-ins | body link | left intentionally |
+| Lots 5/6/7 (archived) | Lot 5 (archived) | body link | left intentionally |
+| Health Dashboard (archived with Zye's Brain) | W-005 | body link | left intentionally |
+| Vehicles & Household | Properties, Vendors, Insurance DBs (archived); Equipment, Maintenance, Home Projects (404) | mention / body link | left intentionally: archived targets still resolve; the three 404s predate this work and are noted in the page's metadata block |
+| Sales Pipeline ↔ Contacts | relation | relation property | left intentionally; verified on one row after Batch 2 |
+| Financial Accounts ↔ Trading Ideas | relation | relation property | not touched |
+| Canon Registry | 33 targets | url property | unresolved for Don: add 🗄️ Archived status; flip Zye's Brain, Work Hub, Brain Contacts, Life Scorecard, W-002 rows; fix Cold Outreach Page URL to 7746e9da82704554baeb09f7321cd5a0 |
+| Scheduled task (monthly flood) | Flood & Crest page | task target | left intentionally: Don confirmed no task writes into the moved subtree; page ID unchanged |
+
+## 3. Read this first, per domain
+
+| Domain | Read first | Then |
+|---|---|---|
+| Everything | 🔗 Shared Context Packet, then 🧠 Memory Operating System W-063 | 📐 Workspace Rules for placement and hygiene; Canon Registry for source status |
+| Personal / identity | 📋 Personal Context W-001 (Corrections section at the bottom is newest) | 👥 People (child of W-001) |
+| Health | ❤️ Health Context W-005 canonical answers block | W-049 latest A1c, W-064 medication reconciliation worksheet; 💪 Health & Fitness W-024 for supplements DB and clinician prep; medication questions go to Dr. Patel |
+| Money / trading | 💰 Money W-054 | 💼 Financial Accounts W-060, 💡 Trading Ideas W-061, 🧭 State Reconciliation (under Trading) for the current book |
+| RiverHouse / DMZ | 🏡 RiverHouse W-025 | 🏡 Property Reference W-036 (Tier 3), 🛎️ Guest Guide W-037, 🏠 Properties Hub (Current State block pending Don), 🌊 Flood & Crest reference |
+| Ventures | 🏕️ Side Businesses W-057 | 🛶 River Watch W-041, 🧪 Prompt Lab W-051, 🧪 Zemple Polsia W-052, 🚀 Side Hustle W-067 |
+| Agent stack | 🧠 W-063 authority matrix | ⏰ Scheduled Task Registry W-042, 🖥️ PiMan W-065, ⚙️ Hermes W-008 (flagged stale), 🗄️ Records Retention W-068 |
+| TeamLogic | 🚩 TeamLogic (Migrating) callout, then stop | 🚚 Migration Manifest W-044 on the Teams account |
+| Knowledge | 📑 Wiki Index | Business Insights (live DB), Process Library, Technical Documentation, Lessons Learned |
+| Anything old | 🗄️ Archive › area sub-page | Read the callout first; the successor is named there |
+
+## 4. Phase 4
+
+📐 Workspace Rules page created under Command Center (3d2eb501d42c819faa35f6810335876a). It covers placement per domain, the archive rule and callout format, the inbound-link search rule, the 90-day staleness procedure, the required metadata block, hub-summary rewriting on change, the never-delete rule, and the A1/A2 authority split, and it carries the Command Center replacement text in a toggle for Don to paste.
+
+Recommended recurring task (recommendation only, not created): "Monthly staleness and link-integrity check", first Sunday of each month, folded into the existing Sunday lint in W-042. Steps are section 4 of the Rules page. Output is Inbox rows only; no moves without Don's approval.
+
+## 5. Open for Don
+
+1. Paste the Command Center replacement text (toggle at the bottom of the Workspace Rules page).
+2. Canon Registry: add 🗄️ Archived status, flip the five archived rows, fix the Cold Outreach Page URL, add rows for Archive, TeamLogic (Migrating), and Workspace Rules if he wants them tracked.
+3. Fill the Properties Hub Current State block and mark the Tracker RECONCILE notes.
+4. Rewrite ⚙️ Hermes W-008.
+5. Complete the W-004 review.
+6. Decide whether Workspace Rules gets W-069.
+7. Approve or decline the W-050 repoint (Reading & Resources → Business Insights).
+8. Add the monthly staleness task to W-042 if he wants it.
