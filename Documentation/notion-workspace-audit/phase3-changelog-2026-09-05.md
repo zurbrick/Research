@@ -113,3 +113,24 @@ Still open for Don: the July Technical Documentation row naming Orbit (TeamLogic
 - **Retry note:** the first pass of the four health-page appends returned success for all four, but fresh reads showed only W-064 changed; W-045, W-049, and the endocrinology note were untouched with their original last-edited times. The three were re-issued and each read back with the note at the bottom and nothing else changed. Lesson recorded for the Workspace Rules: a write is not done until the read-back shows it, and a cached fetch (an "as of" date older than the write) is not a read-back.
 - **Preference saved (Don, 2026-09-05):** "Ask questions one at a time, never batched" appended to W-001 Corrections and read back.
 - **QuantConnect reconciliation:** the W-001 read-back revealed two ChatGPT/Codex writes made today without Inbox deltas: a trading-platform correction inserted in the Money & trading section, and a "ChatGPT operating preferences adopted" block under Corrections. Don confirmed the trading correction (TradeStation and Schwab; no QuantConnect). MAX appended a dated Corrections line to W-054 Money (which still listed QuantConnect plus IB) and to W-001, and posted an Inbox [CORRECTION] row marked Done that also notes the missing ChatGPT deltas for the Sunday lint.
+
+## 10. Post-reorganization review and Batch A (2026-09-06)
+
+Don closed PR #6 unmerged on 2026-09-06 and chose to keep this branch as the record; a pointer callout was added to the bottom of 📐 Workspace Rules naming the branch and the three files. He then asked for a read-only review of every folder and page under Command Center: does its location make sense, and should it be moved, updated, or archived.
+
+**Review scope.** Command Center and every direct child, the five Archive sub-pages, 🚩 TeamLogic (Migrating), every hub (W-001, W-005, W-024, W-054, W-057, W-025, W-063 and its children), the venture pages, the Wiki Index, the Steward Log, the 2026-09-06 weekly review, and all 38 Canon Registry rows. Not read: every archived page body, every database row, and the full PiMan page (head only).
+
+**Findings (structure holds; no rethink).** Move: W-065 PiMan from W-063 to Command Center (PROJECTS); the five weekly review pages into a new 🗓️ Weekly Reviews holder page; the 🔄 Momentum ETF Trades database and the RedTeam Stress Test page to Archive › LIFE. Archive candidates for Don: 🧪 Prompt Lab W-051 (parked 84 days), ✈️ Travel (empty), Zemple.ai W-052 and Side Hustle W-067 (decide by their 90-day dates), two untitled databases in the Archive to be titled. Update: W-001 body contradicts its own appended corrections (rebuild to v3.2); W-054 snapshot 102 days old; W-024 body is the 2025 template; 🚗 Vehicles & Household body describes archived and non-existent databases; W-063 title still says v1.0; W-058 still reads week 0; W-042 Registry row behind the live comparison; about twenty titles carry the emoji twice. Batches proposed: A small dated notes, B moves and archives, C renames, D rewrites.
+
+**Batch A (Don's "go", 2026-09-06 16:46 UTC), nine writes, all read back:**
+1. 💰 Money W-054: SUPERSEDED callout inserted above Recent Trades and Watch Items.
+2. 🚗 Vehicles & Household: SUPERSEDED callout inserted above the template text.
+3. 🧠 W-063: Corrections section appended (Friday sweep and health tracker are local tasks, not account routines).
+4. 💰 Trading: metadata block and Current State callout inserted at the top.
+5. 📑 Wiki Index: header count 64 → 65 (68 issued, 3 retired). The only in-place text edit.
+6. 🏤 Command Center: surface-rule callout line updated; first-block banner confirmed intact.
+7. Registry ⏰ Scheduled Task Registry row: Verified through 2026-09-06, Review due 2026-09-13, Notes appended.
+8. Registry 📑 Wiki Index row: Notes appended with the current count.
+9. Registry: new row 🚗 Vehicles DB (Tier 2, ⚠️ Partial, contents unverified).
+
+Inbox [CORRECTION] row posted, Status Done. Nothing moved, renamed, replaced, or deleted.
